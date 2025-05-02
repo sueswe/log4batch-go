@@ -16,7 +16,7 @@ log4batch -d ERROR "Something went terriby wrong!"
 ~~~
 
 ~~~
-log4batch -d INFO "scp to server was OK"
+log4batch -d INFO scp from file* to server there.com:/dir/ was OK.
 ~~~
 
 

@@ -15,6 +15,11 @@ func main() {
 	dPart := flag.String("d", "INFO|ERROR|WARNING", "Message-type.")
 	flag.Parse()
 
+	if len(os.Args) == 1 {
+		infoLog.Println("")
+		os.Exit(0)
+	}
+
 	MESSAGE := os.Args[1:]
 	myMessage := strings.Join(MESSAGE[1:], " ")
 

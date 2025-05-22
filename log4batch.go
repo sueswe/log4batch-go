@@ -13,7 +13,7 @@ func usage() {
 	fmt.Println("  log4batch [-d] DEBUG|INFO|WARN|ERROR Text to print and log.")
 	fmt.Println("  Option -d: prints message with date and time.")
 	fmt.Println("  export 'log4batch_debug' to print debug-messages.")
-
+	os.Exit(0)
 }
 
 func main() {
@@ -36,7 +36,7 @@ func main() {
 
 	MESSAGE := os.Args[1:]
 	myMessage := strings.Join(MESSAGE[1:], " ")
-
+	onlyMessage := strings.Join(MESSAGE[0:], " ")
 	if *dPart == "INFO" {
 		newMessage, _ := strings.CutPrefix(myMessage, "INFO")
 		infoLog.Println(newMessage)
@@ -54,6 +54,6 @@ func main() {
 		errorLog.Println(newMessage)
 	} else {
 		//newMessage, _ := strings.CutPrefix(myMessage, "INFO")
-		fmt.Println(MESSAGE)
+		fmt.Println(onlyMessage)
 	}
 }

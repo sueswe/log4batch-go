@@ -13,16 +13,40 @@ env | grep LOADED
 echo "------------------------------------"
 
 
+echo '
+### LINUX #########################################################
+'
 
-cd /tmp/ || exit 1
-"$HOME"/bin/vicecersa.sh stp,testta3,14T4 log4batch \$HOME/bin || {
-    echo "Status: $?"
-    exit 2
-}
+stages="
+stp,testta3
+lgkk,testta3
+"
 
-cd /tmp/ || exit 1
-"$HOME"/bin/vicecersa.sh lgkk,testta3,19Pt log4batch \$HOME/bin || {
-    echo "Status: $?"
-    exit 2
-}
+for UMG in ${stages}
+do
+    cd /tmp/ || exit 1
+    "$HOME"/bin/vicecersa.sh "${UMG}" log4batch \$HOME/bin/ || {
+        echo "Status: $?"
+        exit 2
+    }
+done
+
+
+echo '
+### AIX #########################################################
+'
+
+stages="
+stp,testta2
+lgkk,testta2
+"
+
+for UMG in ${stages}
+do
+    cd /tmp/ || exit 1
+    "$HOME"/bin/vicecersa.sh "${UMG}" log4batch.aix \$HOME/bin/ log4batch || {
+        echo "Status: $?"
+        exit 2
+    }
+done
 
